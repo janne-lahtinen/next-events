@@ -1,14 +1,18 @@
-import { getFeaturedEvents } from "@/dummy-data"
 import EventList from "@/components/events/event-list"
+import { getFeaturedEvents } from "@/data/firebase"
 
-function HomePage() {
-  const featuredEvents = getFeaturedEvents()
-
-  return (
+function HomePage(props) {
+    return (
     <div>
-      <EventList items={featuredEvents} />
+      <EventList items={props.events} />
     </div>
   )
+}
+
+export async function getStaticProps(context) {
+  const featuredEvents = await getFeaturedEvents()
+
+  return { props: { events: featuredEvents }, revalidate: 1800 }
 }
 
 export default HomePage
