@@ -1,4 +1,4 @@
-const url = 'https://next-events-77300-default-rtdb.europe-west1.firebasedatabase.app/events.json'
+const url = process.env.FIREBASE_URL
 
 export async function getAllEvents() {
   const response = await fetch(url)

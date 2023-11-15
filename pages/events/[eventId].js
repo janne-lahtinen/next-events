@@ -4,6 +4,7 @@ import EventLogistics from "@/components/event-detail/event-logistics"
 import EventSummary from "@/components/event-detail/event-summary"
 // import ErrorAlert from "@/components/ui/error-alert"
 import { getEventById, getFeaturedEvents } from "@/data/firebase"
+import Comments from "@/components/input/comments"
 
 function EventDetailPage(props) {
   const event = props.selectedEvent
@@ -32,6 +33,7 @@ function EventDetailPage(props) {
       <EventContent>
         <p>{event.description}</p>
       </EventContent>
+      <Comments eventId={event.id} />
     </>
   )
 }
